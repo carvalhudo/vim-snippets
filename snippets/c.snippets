@@ -89,18 +89,18 @@ snippet t Ternary: `condition ? true : false`
 # switch
 snippet switch
 	switch (${1:/* variable */}) {
-		case ${2:/* variable case */}:
-			${3}
-			${4:break;}${5}
-		default:
-			${6}
+	case ${2:/* variable case */}:
+		${3}
+		${4:break;}${5}
+	default:
+		${6}
 	}
 # switch without default
 snippet switchndef
 	switch (${1:/* variable */}) {
-		case ${2:/* variable case */}:
-			${3}
-			${4:break;}${5}
+	case ${2:/* variable case */}:
+		${3}
+		${4:break;}${5}
 	}
 # case
 snippet case
@@ -153,9 +153,10 @@ snippet fun0
 	}
 # function definition with Doxygen documentation
 snippet dfun0
-	/*! \brief ${1:Brief function description here}
+	/**
+	 * \brief ${1:Brief function description here}
 	 *
-	 *  ${2:Detailed description of the function}
+	 * ${2:Detailed description of the function}
 	 *
 	 * \return ${3:Return parameter description}
 	 */
@@ -171,9 +172,10 @@ snippet fun1
 	}
 # function definition with one parameter with  Doxygen documentation
 snippet dfun1
-	/*! \brief ${1:Brief function description here}
+	/**
+	 * \brief ${1:Brief function description here}
 	 *
-	 *  ${2:Detailed description of the function}
+	 * ${2:Detailed description of the function}
 	 *
 	 * \param $3 ${4:Parameter description}
 	 * \return ${5:Return parameter description}
@@ -190,9 +192,10 @@ snippet fun2
 	}
 # function definition with two parameters with  Doxygen documentation
 snippet dfun2
-	/*! \brief ${1:Brief function description here}
+	/**
+	 * \brief ${1:Brief function description here}
 	 *
-	 *  ${2:Detailed description of the function}
+	 * ${2:Detailed description of the function}
 	 *
 	 * \param $3 ${4:Parameter description}
 	 * \param $5 ${6:Parameter description}
@@ -210,9 +213,10 @@ snippet fun3
 	}
 # function definition with three parameters with  Doxygen documentation
 snippet dfun3
-	/*! \brief ${1:Brief function description here}
+	/**
+	 * \brief ${1:Brief function description here}
 	 *
-	 *  ${2:Detailed description of the function}
+	 * ${2:Detailed description of the function}
 	 *
 	 * \param $3 ${4:Parameter description}
 	 * \param $5 ${6:Parameter description}
@@ -233,36 +237,40 @@ snippet td
 	typedef ${1:int} ${2:MyCustomType};
 # struct
 snippet st
-	/*! \struct $1
-	 *  \brief ${3:Brief struct description}
+	/**
+	 * \struct $1
+	 * \brief ${3:Brief struct description}
 	 *
-	 *  ${4:Detailed description}
+	 * ${4:Detailed description}
 	 */
 	struct ${1:`vim_snippets#Filename('$1_t', 'name')`} {
 		${2:Data} /*!< ${4:Description} */
 	}${5: /* optional variable list */};
 # typedef struct
 snippet tds
-	/*! \struct $2
-	 *  \brief ${5:Brief struct description}
+	/**
+	 * \struct $2
+	 * \brief ${5:Brief struct description}
 	 *
-	 *  ${6:Detailed description}
+	 * ${6:Detailed description}
 	 */
 	typedef struct ${2:_$1 }{
 		m_${3:Data} /*!< ${4:Description} */
 	} ${1:`vim_snippets#Filename('$1_t', 'name')`};
 
 snippet enum
-	/*! \enum $1
+	/**
+	 * \enum $1
 	 *
-	 *  ${2:Detailed description}
+	 * ${2:Detailed description}
 	 */
 	enum ${1:name} { ${0} };
 # typedef enum
 snippet tde
-	/*! \enum $2
+	/**
+	 * \enum $2
 	 *
-	 *  ${4:Detailed description}
+	 * ${4:Detailed description}
 	 */
 	typedef enum {
 		${1:Data} /*!< ${3:Description} */
