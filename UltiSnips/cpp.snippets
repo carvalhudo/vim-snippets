@@ -36,8 +36,7 @@ snippet ponce "#pragma once include guard"
 endsnippet
 
 snippet main
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	${0}
 	return 0;
 }
@@ -54,20 +53,18 @@ ${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:
 endsnippet
 
 snippet cl "class .. (class)"
-class ${1:`!p snip.rv = snip.basename or "name"`}
-{
-public:
+class ${1:`!p snip.rv = snip.basename or "name"`} {
+ public:
 	${1/(\w+).*/$1/} (${2:arguments});
 	virtual ~${1/(\w+).*/$1/} ();
 
-private:
+ private:
 	${0:/* data */}
 };
 endsnippet
 
 snippet ns "namespace .. (namespace)"
-namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
-{
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} {
 	${VISUAL}$0
 }${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
 endsnippet
@@ -82,8 +79,7 @@ endsnippet
 
 snippet readfile "read file (readF)"
 std::vector<char> v;
-if (FILE *fp = fopen(${1:"filename"}, "r"))
-{
+if (FILE *fp = fopen(${1:"filename"}, "r")) {
 	char buf[1024];
 	while(size_t len = fread(buf, 1, sizeof(buf), fp))
 		v.insert(v.end(), buf, buf + len);
@@ -104,34 +100,32 @@ template <typename ${1:_InputIter}>
 endsnippet
 
 snippet cla "An entire .h generator" b
-#ifndef ${2:`!v substitute(vim_snippets#Filename('$1_H','ClassName'),'.*','\U&\E','')`}
+#ifndef ${2:`!v substitute(vim_snippets#Filename('$1_H_','ClassName'),'.*','\U&\E','')`}
 #define $2
 
-class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}
-{
-private:
-	$3
+class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`} {
+ public:
+  $1();
+  virtual ~$1();
 
-public:
-	$1();
-	virtual ~$1();
+ private:
+  $3
 };
 
-#endif /* $2 */
+#endif  // !$2
 endsnippet
 
 
 snippet fnc "Basic c++ doxygen function template" b
 /**
-* @brief: ${4:brief}
-*
-* @param: `!p write_docstring_args(t[3],snip)`
-*
-* @return: `!p snip.rv = t[1]`
-*/
-${1:ReturnType} ${2:FunctionName}(${3:param})
-{
-	${0:FunctionBody}
+ * @brief: ${4:brief}
+ *
+ * @param: `!p write_docstring_args(t[3],snip)`
+ *
+ * @return: `!p snip.rv = t[1]`
+ */
+${1:ReturnType} ${2:FunctionName}(${3:param}) {
+  ${0:FunctionBody}
 }
 endsnippet
 
